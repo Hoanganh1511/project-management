@@ -25,3 +25,7 @@
 - AWS Amplify (for hosting next.js)
 - AWS S3 (for image storage)
 - AWS Cognito (for authentication)
+
+<!-- Scripts Back-end -->
+
+<!-- Scripts Front-end -->
