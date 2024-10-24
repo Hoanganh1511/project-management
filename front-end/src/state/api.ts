@@ -74,6 +74,20 @@ export const api = createApi({
   reducerPath: "api",
   tagTypes: ["Projects", "Tasks", "Users", "Teams"],
   endpoints: (build) => ({
+    // getAuthUser: build.query({
+    //   queryFn: async (_, _queryApi, _extraoptions, fetchWithBQ) => {
+    //     try {
+    //       const user = await getCurrentUser();
+    //       const session = await fetchAuthSession();
+    //       if (!session) throw new Error("No session found");
+    //       const { userSub } = session;
+    //       const { accessToken } = session.tokens ?? {};
+
+    //       const userDetailsResponse = await fetchWithBQ(`users/${userSub}`);
+    //       const userDetails = userDetailsResponse.data as User;
+    //     } catch (err: any) {}
+    //   },
+    // }),
     getProjects: build.query<Project[], void>({
       query: () => "projects",
       providesTags: ["Projects"],
@@ -92,6 +106,13 @@ export const api = createApi({
         result
           ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
           : [{ type: "Tasks" as const }],
+    }),
+    getTasksByUser: build.query<Task[], number>({
+      query: (userId) => `tasks/user/${userId}`,
+      providesTags: (result, error, userId) =>
+        result
+          ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
+          : [{ type: "Tasks", id: userId }],
     }),
     createTask: build.mutation<Task, Partial<Task>>({
       query: (task) => ({
@@ -137,4 +158,5 @@ export const {
   useGetUsersQuery,
   useGetTeamsQuery,
   useSearchQuery,
+  useGetTasksByUserQuery,
 } = api;
