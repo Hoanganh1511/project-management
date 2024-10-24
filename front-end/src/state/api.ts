@@ -74,6 +74,7 @@ export const api = createApi({
   reducerPath: "api",
   tagTypes: ["Projects", "Tasks", "Users", "Teams"],
   endpoints: (build) => ({
+    //
     // getAuthUser: build.query({
     //   queryFn: async (_, _queryApi, _extraoptions, fetchWithBQ) => {
     //     try {
