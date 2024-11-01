@@ -55,7 +55,12 @@ function main() {
             const model = prisma[modelName];
             try {
                 for (const data of jsonData) {
-                    yield model.create({ data });
+                    const existingRecord = yield model.findUnique({
+                        where: { id: data.id },
+                    });
+                    if (!existingRecord) {
+                        yield model.create({ data });
+                    }
                 }
             }
             catch (error) {
