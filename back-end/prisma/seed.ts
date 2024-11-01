@@ -40,12 +40,7 @@ async function main() {
     const model: any = prisma[modelName as keyof typeof prisma];
     try {
       for (const data of jsonData) {
-        const existingRecord = await model.findUnique({
-          where: { id: data.id },
-        });
-        if (!existingRecord) {
-          await model.create({ data });
-        }
+        await model.create({ data });
       }
     } catch (error) {
       console.error(`Error seeding data for ${modelName}:`, error);

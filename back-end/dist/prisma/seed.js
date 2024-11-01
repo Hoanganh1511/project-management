@@ -56,7 +56,7 @@ function main() {
             try {
                 for (const data of jsonData) {
                     const existingRecord = yield model.findUnique({
-                        where: { id: data.id },
+                        where: { userId: data.userId },
                     });
                     if (!existingRecord) {
                         yield model.create({ data });
