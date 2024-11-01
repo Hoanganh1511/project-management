@@ -23,9 +23,6 @@
 - AWS EC2 (for hosting backend)
 - AWS RDS (for postgreql database)
 - AWS Amplify (for hosting next.js)
-- AWS S3 (for image storage)
+- AWS S3 (for storage)
 - AWS Cognito (for authentication)
-
-<!-- Scripts Back-end -->
-
-<!-- Scripts Front-end -->
+- AWS API Gateway

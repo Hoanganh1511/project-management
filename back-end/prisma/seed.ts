@@ -40,6 +40,7 @@ async function main() {
     const model: any = prisma[modelName as keyof typeof prisma];
     try {
       for (const data of jsonData) {
+        delete data.id;
         await model.create({ data });
       }
     } catch (error) {

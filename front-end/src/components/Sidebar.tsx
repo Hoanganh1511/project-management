@@ -160,7 +160,6 @@ const SidebarLink = ({
   const pathname = usePathname();
   const isActive =
     pathname === href || (pathname === "/" && href === "/dashboard");
-  const screenWidth = window.innerWidth;
 
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
