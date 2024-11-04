@@ -13,8 +13,11 @@ exports.createProject = exports.getProjects = void 0;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(555);
     try {
+        console.log(123);
         const projects = yield prisma.project.findMany();
+        console.log(projects);
         res.json(projects);
     }
     catch (error) {
