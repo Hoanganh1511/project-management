@@ -9,6 +9,7 @@ import taskRoutes from "./routes/taskRoutes";
 import searchRoutes from "./routes/searchRoutes";
 import userRoutes from "./routes/userRoutes";
 import teamRoutes from "./routes/teamRoutes";
+import { PrismaClient } from "@prisma/client";
 /* ROUTE IMPORTS */
 /* CONFIGURATIONS */
 dotenv.config();
@@ -31,6 +32,8 @@ app.use("/tasks", taskRoutes);
 app.use("/search", searchRoutes);
 app.use("/users", userRoutes);
 app.use("/teams", teamRoutes);
+const prisma = new PrismaClient();
+
 const port = Number(process.env.PORT) || 8000;
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on part ${port}`);
